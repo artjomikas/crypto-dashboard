@@ -1,4 +1,4 @@
-export {default as Navbar} from './components/Navbar';
+export {default as Sidebar} from './components/Sidebar';
 
 export {default as Assets} from './pages/Assets';
 export {default as Dashboard} from './pages/Dashboard';

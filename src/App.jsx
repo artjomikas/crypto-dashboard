@@ -1,10 +1,10 @@
-import { Navbar, Transactions, Assets, News, Dashboard, NFT} from ".";
+import { Sidebar, Transactions, Assets, News, Dashboard, NFT} from ".";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <Router>
-      <Navbar>
+      <Sidebar>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<Transactions />} />
@@ -12,7 +12,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/nft" element={<NFT />} />
         </Routes>
-      </Navbar>
+      </Sidebar>
     </Router>
   );
 }
