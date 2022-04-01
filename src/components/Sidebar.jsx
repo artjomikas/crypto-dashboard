@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ children }) => {
   const [isOpen, setOpen] = useState(true);
@@ -27,6 +27,7 @@ const Navbar = ({ children }) => {
           )}
         </div>
         <div className="flex gap-x-6 items-center">
+          {/* TODO:MAKE COLOR CHANGING ON PAGE SWITCHING  */}
           <img
             src="./src/assets/navbar_assets/iconic.svg"
             className={`scale-[1.2] cursor-pointer duration-300 ${
@@ -37,19 +38,23 @@ const Navbar = ({ children }) => {
             Crypto<b>Board</b>
           </h1>
         </div>
-        <ul className="pt-28">
-          {Menus.map((Menu, index) => (
-            <Link
-              to={Menu.path}
+        <ul className="flex flex-col pt-36 gap-10">
+          {Menus.map((element, index) => (
+            <NavLink
+              to={element.path}
               key={index}
-              className={`flex pb-8 cursor-pointer text-nb-black items-center gap-x-10`}>
-              <img src={`./src/assets/navbar_assets/${Menu.title}.svg`} />
-              <span className={`${!isOpen && "scale-0"}`}>{Menu.title}</span>
-            </Link>
+              className={({ isActive }) =>
+                isActive
+                  ? "flex cursor-pointer text-active items-center border-r-[4px] -right-2 gap-x-10 border-purple"
+                  : "flex cursor-pointer text-inactive items-center gap-x-10"
+              }>
+              <img src={`./src/assets/navbar_assets/${element.title}.svg`} />
+              <span className={`${!isOpen && "scale-0"}`}>{element.title}</span>
+            </NavLink>
           ))}
         </ul>
       </div>
-      <div className='p-16'>{children}</div>
+      <div className="p-16">{children}</div>
     </div>
   );
 };
