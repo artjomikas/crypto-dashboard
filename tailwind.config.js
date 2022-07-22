@@ -11,6 +11,9 @@ module.exports = {
         'active': '#352E5B',
         'inactive': '#A5A2B8'
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
