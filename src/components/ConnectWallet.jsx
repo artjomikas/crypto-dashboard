@@ -4,13 +4,14 @@ import {
   RainbowKitProvider,
   connectorsForWallets,
   wallet,
-  darkTheme
+  darkTheme,
 } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import ConnectWalletButton from "./ConnectWalletButton";
 import "@rainbow-me/rainbowkit/styles.css";
+import ThemeToggle from "../theme/ThemeToggle";
 
 const { chains, provider } = configureChains(
   [chain.mainnet],
@@ -36,27 +37,27 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiClient = createClient({
-  autoConnect: true,
   connectors,
   provider,
 });
 
-
-
 const ConnectWallet = () => {
   return (
     <div className="absolute mx-auto w-full">
-      <div className="float-right p-4">
+      
+      <div className="flex float-right pt-8 pr-14 items-center justify-center ">
+      <ThemeToggle />
         <WagmiConfig client={wagmiClient}>
           <RainbowKitProvider
             chains={chains}
             theme={darkTheme({
-              accentColor: '#BB7FF5',
-              accentColorForeground: 'white',
-              borderRadius: 'small',
-              fontStack: 'system',
+              accentColor: "#BB7FF5",
+              accentColorForeground: "white",
+              borderRadius: "small",
+              fontStack: "system",
             })}
           >
+            
             <ConnectWalletButton />
           </RainbowKitProvider>
         </WagmiConfig>

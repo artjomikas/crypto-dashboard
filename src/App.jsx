@@ -9,12 +9,14 @@ import {
   ConnectWallet,
 } from ".";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from './theme/ThemeContext'
 
 function App() {
   return (
-    <Router>
-      <ConnectWallet />
-      <Sidebar>
+    <ThemeProvider>
+      <Router>
+        <ConnectWallet />
+        <Sidebar>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
@@ -23,9 +25,9 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/nft" element={<NFT />} />
           </Routes>
-        
-      </Sidebar>
-    </Router>
+        </Sidebar>
+      </Router>
+    </ThemeProvider>
   );
 }
 
